@@ -177,10 +177,14 @@ end
 
 def player_stats(player_name)
   game_hash.each do |team, team_info|
-    team_info[:players].each do |player|
-      if player == player_name
-       
-      end 
-    end 
-  end 
-end 
+    team_info.each do |key, value|
+      if key == :players
+        value.each do |player|
+          if players_name == player[:player_name]
+            return player
+          end
+        end
+      end
+    end
+  end
+end
