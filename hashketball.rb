@@ -129,12 +129,12 @@ end
 
 def num_points_scored(player_name)
   game_hash.each do |team, team_info|
-    team_info[:players].each do |player|
+   team_info[:players].each do |player|
       if player[:player_name] == player_name
         return player[:points]
-      end
-    end
-  end
+     end 
+   end 
+  end 
 end
 
 def shoe_size(player_name)
@@ -142,40 +142,38 @@ def shoe_size(player_name)
     team_info[:players].each do |player|
       if player[:player_name] == player_name
         return player[:shoe]
-      end
-    end
-  end
+      end 
+    end 
+  end 
 end 
 
 def team_colors(team_name)
   game_hash.each do |team, team_info|
     if team_info[:team_name] == team_name
-      return team_info[:colors]
+    return team_info[:colors]
     end 
   end 
 end 
 
 def team_names
-  game_hash.map do |team, team_info|
-    team_info[:team_name]
-  end
+  array= []
+  game_hash.each do |team, team_info|
+    array << team_info[:team_name]
+  end 
+  return array 
 end 
 
-def player_numbers(input)
-  output = []
+def player_numbers(team_name)
+  jersey_numbers = []
   game_hash.each do |team, team_info|
-    if team_info[:team_name] == input 
-      team_info.each do |key, value|
-        if key == :players
-          value.each do |player|
-          output.push(player[:number])
-          end
-        end
-      end
-    end
-  end
-  return output
-end
+    if team_info[:team_name] == team_name
+     team_info[:players].each do |player|
+      jersey_numbers<< player[:number]
+     end
+    end 
+  end 
+ return jersey_numbers
+end 
 
 def player_stats(players_name)
   game_hash.each do |team, team_info|
@@ -192,7 +190,7 @@ def player_stats(players_name)
 end
 
 def big_shoe_rebounds
-    big_shoe = 0
+   big_shoe = 0
   rebounds = 0
   game_hash.each do |team, team_info|
     team_info[:players].each do |player|
