@@ -166,10 +166,11 @@ end
 def player_numbers(team_name)
   jersey_numbers = []
   game_hash.each do |team, team_info|
-    team_info[:players].each do |player|
+    if team_info[:team_name] == team_name
+     team_info[:players].each do |player|
       jersey_numbers<< player[:number]
-    end   
+     end
+    end 
   end 
-  binding.pry
  return jersey_numbers
 end 
