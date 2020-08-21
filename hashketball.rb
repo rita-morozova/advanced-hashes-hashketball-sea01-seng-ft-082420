@@ -170,5 +170,6 @@ def player_numbers(team_name)
       jersey_numbers<< player[:number]
     end   
   end 
+  binding.pry
  return jersey_numbers
 end 
